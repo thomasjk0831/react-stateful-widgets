@@ -14,22 +14,27 @@ Only one square (or none) can be active at any given point.
 Find comments below to help you along.
 */
 
-import React from 'react';
+import React, { useState } from 'react';
 
 // Use this variable ONLY to initialize a slice of state!
-const listOfSquareIds = ['sqA', 'sqB', 'sqC', 'sqD'];
+const listOfSquareIds = ['sqA', 'sqB', 'sqC', 'sqD', 'sqE', 'sqF'];
 
 export default function Squares() {
   // Use the state hook twice, as we need two slices of state: 'squares' and
   // 'activeSquare'. One holds the _array_ of square ids, and the other keeps track
   // of the currently active square (if any).
+  const [squares, updateSquares] = useState(listOfSquareIds)
+  const [activeSquare, updateActive] = useState('sqA')
+  console.log(activeSquare)
 
   const isActive = id => {
     // This is not a click handler but a helper, used inside the JSX, (See below)
     // and should return a class name of active if the id passed
     // matches the active square in state, empty string otherwise.
     // Right-click and "inspect element" on the square to see its effect.
-    return ''
+     if(id===activeSquare) 
+     return 'active'
+     else return ''
   };
 
   const markActive = id => {
@@ -37,6 +42,7 @@ export default function Squares() {
     // Set the id argument to be the active id in state
     // (unless it already is, in which case we should reset
     // the currently active square id back to initial state).
+    updateActive(id)
   };
 
   return (
@@ -51,7 +57,7 @@ export default function Squares() {
             <div
               id={id}
               key={id}
-              className={`square${isActive(id)}`}
+              className={`square ${isActive(id)}`}
               onClick={() => markActive(id)}
             >
             </div>
