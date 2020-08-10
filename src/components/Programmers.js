@@ -28,7 +28,7 @@ export default function Programmers() {
   // We'll have to use the state hook twice, as we need two slices of state.
   // The programmers on the one hand, and the id of the featured programmer on the other.
   const [programmers, updateProgrammers] = useState(listOfAwesome)
-  console.log(programmers)
+  
   const [ids, updateIds] = useState('')
     
  
@@ -63,7 +63,7 @@ export default function Programmers() {
           /* Nasty bug! We should map over a slice of state, instead of 'listOfAwesome'.
           We might say: "it works, though!" But if the list of programmers is not state,
           we could never add or edit programmers in the future. The list would be a static thing. ;)" */
-          listOfAwesome.map(dev =>
+          programmers.map(dev =>
             <div key={dev.id}>
               {dev.name} <button onClick={() => {updateIds(dev.id); getNameOfFeatured()}}>Feature</button>
             </div>

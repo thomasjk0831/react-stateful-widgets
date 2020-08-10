@@ -25,7 +25,7 @@ export default function Squares() {
   // of the currently active square (if any).
   const [squares, updateSquares] = useState(listOfSquareIds)
   const [activeSquare, updateActive] = useState('sqA')
-  console.log(activeSquare)
+  console.log(squares)
 
   const isActive = id => {
     // This is not a click handler but a helper, used inside the JSX, (See below)
@@ -53,7 +53,7 @@ export default function Squares() {
           /* Nasty bug! We should map over a slice of state, instead of 'listOfSquareIds'.
           We might say: "it works, though!" But if the list of squares is not state,
           we could never add squares, change squares or remove squares in the future. Fix!" */
-          listOfSquareIds.map(id =>
+          squares.map(id =>
             <div
               id={id}
               key={id}
