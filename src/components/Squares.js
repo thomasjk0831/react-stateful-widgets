@@ -24,7 +24,7 @@ export default function Squares() {
   // 'activeSquare'. One holds the _array_ of square ids, and the other keeps track
   // of the currently active square (if any).
   const [squares, updateSquares] = useState(listOfSquareIds)
-  const [activeSquare, updateActive] = useState('sqA')
+  const [activeSquare, updateActive] = useState('')
   console.log(squares)
 
   const isActive = id => {
