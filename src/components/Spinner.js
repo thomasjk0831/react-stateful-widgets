@@ -37,22 +37,46 @@ STEP 4:
   Do you remember the operator we use to do "not"?
 */
 
-import React from 'react'; /* STEP 0 */
+import React, { useState } from 'react'; /* STEP 0 */
+
 
 export default function Spinner() {
   /* STEP 1 */
-
+  const [spinnerOn, setSpinnerOn]= useState(true)
   const toggleSpinner = () => {
     /* STEP 4 */
+    setSpinnerOn(!spinnerOn)
   };
 
   return (
     <div className='widget-spinner container'>
       <h2>Spinner</h2>
       {
-        true && <div className='spinner'>--+--</div> /* STEP 2 */
+        spinnerOn && <div className='spinner'>--+--</div> /* STEP 2 */
       }
-      <button onClick={toggleSpinner}>Hide Spinner</button> {/* STEP 3 */}
+      <button onClick={toggleSpinner}>{spinnerOn?'Hide Spinner':'Show Spinner'}</button> {/* STEP 3 */}
     </div>
   );
 }
+
+// STEP 0:
+//   Start by studying the component below, and importing the state hook.
+
+// STEP 1:
+//   Create a 'spinnerOn', 'setSpinnerOn' pair of variables using the state hook.
+//   The 'spinnerOn' should be initialized to true if you want the spinner to be visible on page load, false otherwise.
+
+// STEP 2:
+//   This is called a logical expression. If the expressions on both sides of the '&&' are truthy,
+//   the one on the right becomes the value of the whole line. If the expression on the left of the '&&'
+//   is falsy, this thing on the left becomes the value of the whole line. It's a neat little trick to render
+//   a React element (in this case the spinner) conditionally: only if the variable on the left is truthy.
+
+//   Replace the hard-coded 'true' with the variable that keeps track of whether spinner is on or not.
+
+// STEP 3:
+//   Use a ternary expression inside the text of the button, to render "Hide" or "Show" depending on the value of 'spinnerOn'.
+
+// STEP 4:
+//   This click handler needs to toggle the spinner by setting "whether on" to be the opposite of what it currently is.
+//   Do you remember the operator we use to do "not"?
