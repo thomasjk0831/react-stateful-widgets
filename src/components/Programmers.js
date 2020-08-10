@@ -32,10 +32,9 @@ export default function Programmers() {
   const [ids, updateIds] = useState('')
     
  
+  
 
- console.log(ids)
-
-
+  
   
 
   const getNameOfFeatured = () => {
@@ -43,6 +42,7 @@ export default function Programmers() {
     // It's going to need information from both slices of state!
     // Using the currently celebrated id, find inside the programmers slice of state
     // the _name_ of the currently celebrated programmer, and return it.
+    return (programmers[ids-1].name)
     
   };
 
@@ -65,7 +65,7 @@ export default function Programmers() {
           we could never add or edit programmers in the future. The list would be a static thing. ;)" */
           listOfAwesome.map(dev =>
             <div key={dev.id}>
-              {dev.name} <button onClick={() => {getNameOfFeatured()}}>Feature</button>
+              {dev.name} <button onClick={() => {updateIds(dev.id); getNameOfFeatured()}}>Feature</button>
             </div>
           )
         }
@@ -73,7 +73,7 @@ export default function Programmers() {
       {
         // Ternaries are fantastic to render "one thing or the other" depending on the "truthiness" of something.
         // Pseudo-code: if the currently featured id is truthy render div 1, otherwise render div 2. Fix!
-        false
+        ids
           ? <div style={style}>🎉 Let&apos;s celebrate {getNameOfFeatured()}! 🥳</div>
           : <div style={style}>Pick an awesome programmer</div>
       }
