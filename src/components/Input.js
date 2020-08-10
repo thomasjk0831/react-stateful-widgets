@@ -45,7 +45,7 @@ export default function Input() {
     const { value } = evt.target;
      
     /* STEP 4 */
-    setInputValue(value)
+    setInputValue(value.toUpperCase())
   };
   const reset = () => {
     /* STEP 5 */
@@ -81,6 +81,8 @@ export default function Input() {
     marginBottom: '0.3em',
     color: inputValue.length>10? 'crimson' : 'royalblue', /* STEP 2 */
   };
+  
+  
 
   return (
     <div className='widget-input container'>
