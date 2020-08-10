@@ -25,7 +25,7 @@ export default function Squares() {
   // of the currently active square (if any).
   const [squares, updateSquares] = useState(listOfSquareIds)
   const [activeSquare, updateActive] = useState('')
-  console.log(squares)
+  // console.log(squares)
 
   const isActive = id => {
     // This is not a click handler but a helper, used inside the JSX, (See below)
